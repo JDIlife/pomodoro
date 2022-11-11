@@ -1,0 +1,51 @@
+html, body {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  text-align: center;
+}
+
+#timeSettingTitle {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#timeSetting {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#timeSetting input[type="number"] {
+  width: 50px;
+}
+
+#totalTimerDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#timer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#lapsTitle{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#submitTime{
+  text-align: center;
+}
