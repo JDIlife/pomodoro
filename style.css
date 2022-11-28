@@ -5,47 +5,176 @@ html, body {
 
 header {
   text-align: center;
+  font-size: 20px;
+  margin: 2%;
+}
+
+main{
+  display: flexbox;
+  justify-content: center;
 }
 
 ul {
   list-style: none;
   text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  background: none;
+  cursor: pointer;
 }
 
 #timeSettingTitle {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.3fr;
+  place-items: center;
+  background-color: #63BEBE;
+  border-radius: 40px;
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 2%;
 }
 
 #timeSetting {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.3fr;
+  place-items: center;
+  margin-bottom: 2%;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 0px;
 }
 
 #timeSetting input[type="number"] {
   width: 50px;
 }
 
+#timeSettingBtn {
+  background: none;
+  border: 0;
+  outline: 0;
+  font-size: 40px;
+  grid-column: 4/5;
+  grid-row: 1/2;
+}
+
+#studySetting {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 90px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#restSetting {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 90px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+#cycleInput {
+  grid-column: 3/4;
+  grid-row: 1/2;
+  width: 90px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+
+}
+
+
 #totalTimerDiv {
   display: flex;
   justify-content: space-evenly;
+  font-size: 30px;
+  margin-bottom: 2%;
 }
 
 #timer {
   display: flex;
   justify-content: space-evenly;
+  font-size: 50px;
+  margin-bottom: 2%;
 }
 
 #btns {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 2%;
+}
+
+#startBtn {
+  font-size: 40px;
+}
+
+#stopBtn {
+  font-size: 40px;
 }
 
 #lapsTitle{
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 2fr 0.3fr 0.3fr 0.3fr;
+  place-items: center;
+  background-color: #8DEBEB;
+  font-size: 30px;
+  width: 60%;
+  border-radius: 40px;
+  margin-left: 20%;
+}
+
+#laps{
+  margin-bottom: 5%;
+}
+
+#rate {
+  font-size: 16px;
+}
+
+.lap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 20px;
+  width: 60%;
+  margin-left: 20%;
+  grid-template-columns: 1fr 2fr 0.3fr 0.3fr 0.3fr;
+}
+
+.lap input {
+  text-align: center;
+}
+
+
+#evaluationText{
+  background-color: #B3D9DE;
+  border-radius: 3%;
 }
 
 #submitTime{
   text-align: center;
+}
+
+#submitTime form {
+  font-size: 30px;
+}
+
+#submitTime input {
+  height: 30px;
+  width: 50%;
+  border-radius: 20px;
+}
+
+#submitBtn{
+  font-size: 26px;
+  position: relative;
+  right: 50px;
+  top: 5px;
 }

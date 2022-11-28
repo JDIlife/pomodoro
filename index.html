@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="./style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <script defer src="./main.js"></script>
 </head>
 
@@ -14,12 +15,12 @@
     Pomodoro
   </header>
   <main>
-    <div id="timeSettingTitle">
+    <span id="timeSettingTitle">
       <div>Study</div>
       <div>Rest</div>
       <div>Cycle</div>
-    </div>
-    <div id="timeSetting">
+    </span>
+    <span id="timeSetting">
       <label for="studySetting"></label>
       <select id="studySetting">
         <option value="1">1</option>
@@ -37,8 +38,8 @@
         <option value="10">10</option>
       </select>
       <input type="number" name="cycle" value="1" min="1" id="cycleInput">
-      <button id="timeSettingBtn">setting</button>
-    </div>
+      <button id="timeSettingBtn"><i class="fa-solid fa-circle-arrow-right"></i></button>
+    </span>
 
     <div id="totalTimerDiv">
       <div id="totalStudyTimer"></div>
@@ -51,22 +52,24 @@
     </div>
 
     <div id="btns">
-      <button id="startBtn">start</button>
-      <button id="stopBtn">stop</button>
+      <button id="startBtn"><i class="fa-solid fa-circle-play"></i></button>
+      <button id="stopBtn"><i class="fa-solid fa-circle-pause"></i></button>
     </div>
 
-    <div id="lapsTitle">
-      <div>Laps</div>
-      <div>Goal</div>
-      <div>High Midium Low</div>
-    </div>
+    <span id="lapsTitle">
+      <span>Laps</span>
+      <span>Goal</span>
+      <span>H</span>
+      <span>M</span>
+      <span>L</span>
+    </span>
     <ul id="laps">
     </ul>
     <div id="submitTime">
       <form>
         <label for="evaluationText">study review!</label>
         <input type="text" name="" id="evaluationText" maxlength="30" autocomplete="off">
-        <button type="submit">done!</button>
+        <button id="submitBtn" type="submit"><i class="fa-solid fa-pencil"></i></button>
       </form>
     </div>
   </main>
