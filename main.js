@@ -73,7 +73,7 @@ function setLaps() {
   for (let i = 0; i < cycleInput.value; i++) {
     let lapDiv = document.createElement("div");
     lapDiv.innerHTML = `lap${i + 1} 
-      <input type="text" maxlength="20" autocomplete="off">
+      <input type="text" maxlength="20" autocomplete="off" placeholder="input your Goal!">
       <label><input type="radio" value="high" name="concentration${i}"></label>
       <label><input type="radio" value="midium" name="concentration${i}"></label>
       <label><input type="radio" value="low" name="concentration${i}"></label>
