@@ -1,0 +1,25 @@
+{
+  "name": "pomodoroweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDIlife/pomodoro.git"
+  },
+  "keywords": [
+    "pomodoro"
+  ],
+  "author": "JDI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JDIlife/pomodoro/issues"
+  },
+  "homepage": "https://github.com/JDIlife/pomodoro#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
