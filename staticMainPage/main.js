@@ -62,7 +62,7 @@ dbReq.onsuccess = function(event) {
 dbReq.onupgradeneeded = function(event) {
   let db = dbReq.result;
 
-  let dataStore = db.createObjectStore("data");
+  let dataStore = db.createObjectStore("data", { keyPath: "id", autoIncrement: true });
 }
 
 // indexedDB에 저장할 데이터 객체
@@ -112,9 +112,9 @@ function setLaps() {
     let lapDiv = document.createElement("div");
     lapDiv.innerHTML = `lap${i + 1} 
       <input type="text" maxlength="20" autocomplete="off" placeholder="input your Goal!">
-      <label><input type="radio" value="high" name="concentration${i}"></label>
-      <label><input type="radio" value="midium" name="concentration${i}"></label>
-      <label><input type="radio" value="low" name="concentration${i}"></label>
+      <label><input type="radio" value="3" name="concentration${i}"></label>
+      <label><input type="radio" value="2" name="concentration${i}"></label>
+      <label><input type="radio" value="1" name="concentration${i}"></label>
       `;
     lapDiv.setAttribute("class", "lap");
     laps.appendChild(lapDiv);
@@ -210,20 +210,63 @@ function alarmStudyTime() {
 
 submitBtn.addEventListener("click", () => {
 
+  // 현재 날짜 값을 구함
   let year = new Date().getFullYear();
   let month = new Date().getMonth() + 1;
   let date = new Date().getDate();
 
   let currentDate = `${year}:${month}:${date}`
 
+  // 총 공부 사이클 시간
   let cycleTime = totalStudyTimer.innerText;
+  // 한줄평 텍스트를 담는 변수
   let evalu = evaluationText.value;
 
-  let focusRate;
+
+  // 선택된 라디오 버튼을 더해서 집중도 평균을 구한다
+  let radioCheck = 0;
+  let lapsNum = document.getElementsByClassName("lap");
+
+  for (let i = 0; i < lapsNum.length; i++) {
+    let focus = document.getElementsByName(`concentration${i}`);
+    focus.forEach((node) => {
+      if (node.checked) {
+        radioCheck += parseInt(node.value);
+      }
+    })
+  }
+
+  let focusRate = radioCheck / lapsNum.length;
+
+  // indexedDB 에 저장할 객체 생성
+  const usd = new UserData(currentDate, cycleTime, evalu, focusRate);
+  console.log(usd)
+
+  // indexedDB에 데이터 저장
+
+  let request = window.indexedDB.open("pomodoro", 1);
+  request.onerror = (event) => {
+    //alert('Database error');
+  }
+
+  request.onsuccess = (event) => {
+    let db = request.result
+    let transaction = db.transaction(["data"], "readwrite");
 
 
-  console.log(currentDate)
-  console.log(cycleTime)
-  console.log(evalu)
-  console.log(focusRate)
+    transaction.onerror = (event) => {
+      console.log("error");
+    }
+    transaction.onsuccess = (event) => {
+      console.log("success")
+    }
+
+    let objStore = transaction.objectStore("data");
+
+    let addReq = objStore.add(usd);
+    addReq.onsuccess = (event) => {
+      console.log("데이터 저장 성공")
+    }
+  }
+
 });
