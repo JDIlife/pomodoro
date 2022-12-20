@@ -1,3 +1,6 @@
+let listUl = document.getElementById("listUl");
+
+// RecordPage 가 로딩 되자마자 DB를 열어서 값을 사용자에게 보여줌
 window.addEventListener("DOMContentLoaded", () => {
 
   // indexedDB 생성
@@ -18,7 +21,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let dataStore = db.createObjectStore("data", { keyPath: "id", autoIncrement: true });
   }
-  console.log("db 오픈함")
 
   // indexedDB 의 값 가져오기
   let request = window.indexedDB.open("pomodoro", 1);
@@ -30,9 +32,19 @@ window.addEventListener("DOMContentLoaded", () => {
     objStore.openCursor().onsuccess = (event) => {
       let cursor = event.target.result;
       if (cursor) {
-        console.log("cursor " + cursor.key);
+        listUl.innerHTML += `
+          <div class="listItemDiv">
+            <div class="date">${cursor.value.date}</div>
+            <div class="listLine">
+              <div>${cursor.value.cycleTime}</div>
+              <div>${cursor.value.evalu}</div>
+              <div>${cursor.value.focusRate}</div>
+            </div>
+          </div>
+        `;
+        cursor.continue();
       } else {
-        console.log("cursor error")
+        console.log("get all cursor");
       }
     }
 
