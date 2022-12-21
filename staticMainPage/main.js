@@ -186,7 +186,7 @@ stopBtn.addEventListener("click", stopTimer);
 
 function alarmRestTime() {
   studyTime = studyTimeStore;
-  if (confirm("Do you wnat to start Rest Timer?")) {
+  if (confirm("쉬는시간 타이머를 시작하시겠습니까?")) {
     restInterval = setInterval(startRestTimer, 1000);
     studyTime = studyTimeStore;
   } else {
@@ -196,7 +196,7 @@ function alarmRestTime() {
 
 function alarmStudyTime() {
   restTime = restTimeStore;
-  if (confirm("Do you want to start Study Timer?")) {
+  if (confirm("공부 타이머를 시작하시겠습니까?")) {
     studyInterval = setInterval(startStudyTimer, 1000);
     clearInterval(restInterval);
     cycleTime++;
@@ -207,7 +207,7 @@ function alarmStudyTime() {
 }
 
 
-
+// submit 버튼을 누르면 타이머 기록을 indexedDb에 저장한다
 submitBtn.addEventListener("click", () => {
 
   // 현재 날짜 값을 구함
@@ -236,7 +236,16 @@ submitBtn.addEventListener("click", () => {
     })
   }
 
-  let focusRate = radioCheck / lapsNum.length;
+  let focusRate;
+  let division = radioCheck / lapsNum.length;
+
+  if (Math.round(division) == 3) {
+    focusRate = "High";
+  } else if (Math.round(division) == 2) {
+    focusRate = "Midium";
+  } else {
+    focusRate = "Low";
+  }
 
   // indexedDB 에 저장할 객체 생성
   const usd = new UserData(currentDate, cycleTime, evalu, focusRate);
@@ -246,7 +255,7 @@ submitBtn.addEventListener("click", () => {
 
   let request = window.indexedDB.open("pomodoro", 1);
   request.onerror = (event) => {
-    //alert('Database error');
+    alert('Database error');
   }
 
   request.onsuccess = (event) => {
